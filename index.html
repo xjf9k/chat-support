@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Чат поддержки OLIMPBET</title>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .chat-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      width: min(360px, 85vw);
+      background-color: #d32f2f;
+      color: #ffffff;
+      border: 2px solid #b62828;
+      border-radius: 0;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .chat-button:focus,
+    .chat-button:focus-visible {
+      outline: 3px solid rgba(211,47,47,0.15);
+      outline-offset: 3px;
+    }
+
+    .chat-button:hover {
+      background-color: #c62828;
+      border-color: #a21f1f;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="chat-button" href="#"
+       onclick="if (webim && webim.api && webim.api.chat && typeof webim.api.chat.start === 'function') { webim.api.chat.start(); } return false;"
+       role="button">
+      Чат поддержки OLIMPBET
+    </a>
+  </div>
+
+  <!-- Подключаем Webim -->
+  <script type="text/javascript">
+    webim = {
+      accountName: "wwwolimpbet",
+      domain: "webim.olimp.bet",
+      location: "identificirovan_bolee_7_dnej",
+      hideDefaultButton: true // скрываем стандартный плавающий виджет
+    };
+
+    (function () {
+      var s = document.createElement("script");
+      s.type = "text/javascript";
+      s.src = "https://webim.olimp.bet/js/button.js";
+      document.getElementsByTagName("head")[0].appendChild(s);
+    })();
+  </script>
+</body>
+</html>
