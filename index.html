@@ -47,44 +47,6 @@
       background-color: #c62828;
       border-color: #a21f1f;
     }
-    /* Только для экранов уже 600px (телефоны) */
-@media (max-width: 600px) {
-  .webim-resizable {
-    max-width: 100% !important;
-    width: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  .webim-body,
-  .webim-dialogue-block {
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-  }
-
-  .webim-message-editor,
-  .webim-form-control textarea {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-}
-    @media (max-width: 600px) {
-  .webim-resizable {
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    height: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .webim-body {
-    height: calc(100% - 60px) !important; /* 60px под поле ввода */
-    overflow-y: auto !important;
-  }
-}
   </style>
 </head>
 <body>
@@ -129,30 +91,6 @@
         }, 200);
       }
     }
-  </script>
-  <script>
-  // следим за изменением высоты экрана при открытии клавиатуры
-  window.addEventListener('resize', () => {
-    const chat = document.querySelector('.webim-resizable');
-    if (chat) {
-      chat.style.maxWidth = '100%';
-      chat.style.width = '100%';
-      chat.style.left = '0';
-      chat.style.right = '0';
-    }
-  });
-
-  // фикс «залипания» поля ввода
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('.webim-form-control textarea')) {
-      setTimeout(() => {
-        e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 300);
-    }
-  });
 </script>
 </body>
 </html>
-
-
-
