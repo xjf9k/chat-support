@@ -52,46 +52,26 @@
 <body>
   <div class="page">
     <a class="chat-button" href="#"
-       onclick="if (webim && webim.api && webim.api.chat && typeof webim.api.chat.start === 'function') { webim.api.chat.start(); } return false;"
+       onclick="openWebimChat(); return false;"
        role="button">
       Чат поддержки OLIMPBET
     </a>
   </div>
 
-  <!-- Подключаем Webim -->
-  <script type="text/javascript">
-    webim = {
-      accountName: "wwwolimpbet",
-      domain: "webim.olimp.bet",
-      location: "identificirovan_bolee_7_dnej",
-      hideDefaultButton: true // скрываем стандартный плавающий виджет
-    };
-
-    (function () {
-      var s = document.createElement("script");
-      s.type = "text/javascript";
-      s.src = "https://webim.olimp.bet/js/button.js";
-      document.getElementsByTagName("head")[0].appendChild(s);
-    })();
-  </script>
-  <body>
-  <a class="chat-button" href="#" role="button"
-     onclick="openWebimChat(); return false;">
-    Нажми, чтобы попасть в чат
-  </a>
-
-  <!-- твой конфиг webim -->
+  <!-- Конфигурация Webim -->
   <script type="text/javascript">
     var webim = {
       accountName: "wwwolimpbet",
       domain: "webim.olimp.bet",
-      location: "identificirovan_bolee_7_dnej",
+      location: "identificirovan_bolee_7_dnej", // маршрутизация в нужную группу
       hideDefaultButton: true
     };
   </script>
+
+  <!-- Подключаем Webim -->
   <script type="text/javascript" src="https://webim.olimp.bet/js/button.js"></script>
 
-  <!-- новая функция -->
+  <!-- Функция запуска чата -->
   <script>
     function openWebimChat() {
       if (window.webim && webim.api && webim.api.chat && typeof webim.api.chat.start === 'function') {
