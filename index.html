@@ -130,7 +130,29 @@
       }
     }
   </script>
+  <script>
+  // следим за изменением высоты экрана при открытии клавиатуры
+  window.addEventListener('resize', () => {
+    const chat = document.querySelector('.webim-resizable');
+    if (chat) {
+      chat.style.maxWidth = '100%';
+      chat.style.width = '100%';
+      chat.style.left = '0';
+      chat.style.right = '0';
+    }
+  });
+
+  // фикс «залипания» поля ввода
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.webim-form-control textarea')) {
+      setTimeout(() => {
+        e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    }
+  });
+</script>
 </body>
 </html>
+
 
 
