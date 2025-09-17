@@ -74,5 +74,43 @@
       document.getElementsByTagName("head")[0].appendChild(s);
     })();
   </script>
+  <body>
+  <a class="chat-button" href="#" role="button"
+     onclick="openWebimChat(); return false;">
+    Нажми, чтобы попасть в чат
+  </a>
+
+  <!-- твой конфиг webim -->
+  <script type="text/javascript">
+    var webim = {
+      accountName: "wwwolimpbet",
+      domain: "webim.olimp.bet",
+      location: "identificirovan_bolee_7_dnej",
+      hideDefaultButton: true
+    };
+  </script>
+  <script type="text/javascript" src="https://webim.olimp.bet/js/button.js"></script>
+
+  <!-- новая функция -->
+  <script>
+    function openWebimChat() {
+      if (window.webim && webim.api && webim.api.chat && typeof webim.api.chat.start === 'function') {
+        webim.api.chat.start();
+      } else {
+        let attempts = 0;
+        let interval = setInterval(function () {
+          attempts++;
+          if (window.webim && webim.api && webim.api.chat && typeof webim.api.chat.start === 'function') {
+            clearInterval(interval);
+            webim.api.chat.start();
+          }
+          if (attempts > 20) {
+            clearInterval(interval);
+            alert("Чат не загрузился, попробуйте ещё раз.");
+          }
+        }, 200);
+      }
+    }
+  </script>
 </body>
 </html>
